@@ -31,7 +31,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
-                .anyRequest().authenticated());
+                .anyRequest().authenticated()); // any request must be authenticated
         //http.formLogin(withDefaults());
         http.csrf(AbstractHttpConfigurer::disable);
         http.httpBasic(withDefaults());
