@@ -13,4 +13,7 @@ public interface UserService {
 
     UserDTO getUserById(Long id);
 
+
+    // UserServiceImpl.java
+    User findByUsername(String username);
 }
