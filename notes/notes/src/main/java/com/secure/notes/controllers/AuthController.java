@@ -168,7 +168,7 @@ public class AuthController {
         return (userDetails != null) ? userDetails.getUsername() : "" ;
     }
 
-    @PostMapping("/public/forgotpassword")
+    @PostMapping("/public/forgot-password")
     public ResponseEntity<?> forgotPassword(@RequestParam String email) {
 
         try{
@@ -179,6 +179,17 @@ public class AuthController {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Email not found!"));
         }
 
+    }
+
+    @PostMapping("/public/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestParam String token, @RequestParam String newPassword) {
+        try{
+            userService.resetPassword(token, newPassword);
+            return ResponseEntity.ok().body(new MessageResponse("Password reset successfully!"));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Password reset failed!"));
+        }
     }
 
 

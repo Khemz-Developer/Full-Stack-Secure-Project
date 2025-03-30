@@ -15,6 +15,9 @@ public class PasswordResetToken {
         this.user = user;
     }
 
+    public PasswordResetToken() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
