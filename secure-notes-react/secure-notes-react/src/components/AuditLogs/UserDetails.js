@@ -43,7 +43,7 @@ const UserDetails = () => {
       setSelectedRole(response.data.role?.roleName || "");
     } catch (err) {
       setError(err?.response?.data?.message);
-      console.error("Error fetching user details", err);
+      console.error("Error fetching user details", err); 
     } finally {
       setLoading(false);
     }
@@ -166,11 +166,11 @@ const UserDetails = () => {
   }
 
   return (
-    <div className="sm:px-12 px-4 py-10   ">
+    <div className="px-4 py-10 sm:px-12 ">
       {loading ? (
         <>
           {" "}
-          <div className="flex  flex-col justify-center items-center  h-72">
+          <div className="flex flex-col items-center justify-center h-72">
             <span>
               <Blocks
                 height="70"
@@ -189,12 +189,12 @@ const UserDetails = () => {
         <>
           <div className="lg:w-[70%] sm:w-[90%] w-full  mx-auto shadow-lg shadow-gray-300 p-8 rounded-md">
             <div>
-              <h1 className="text-slate-800 text-2xl font-bold  pb-4">
+              <h1 className="pb-4 text-2xl font-bold text-slate-800">
                 Profile Information
                 <hr />
               </h1>
               <form
-                className="flex  flex-col  gap-2  "
+                className="flex flex-col gap-2 "
                 onSubmit={handleSubmit(handleSavePassword)}
               >
                 <InputField
@@ -241,7 +241,7 @@ const UserDetails = () => {
                     onClickhandler={() =>
                       setIsEditingPassword(!isEditingPassword)
                     }
-                    className="bg-customRed mb-0 w-fit px-4 py-2 rounded-md text-white"
+                    className="px-4 py-2 mb-0 text-white rounded-md bg-customRed w-fit"
                   >
                     Click To Edit Password
                   </Buttons>
@@ -249,7 +249,7 @@ const UserDetails = () => {
                   <div className="flex items-center gap-2 ">
                     <Buttons
                       type="submit"
-                      className="bg-btnColor mb-0 w-fit px-4 py-2 rounded-md text-white"
+                      className="px-4 py-2 mb-0 text-white rounded-md bg-btnColor w-fit"
                     >
                       {passwordLoader ? "Loading.." : "Save"}
                     </Buttons>
@@ -258,7 +258,7 @@ const UserDetails = () => {
                       onClickhandler={() =>
                         setIsEditingPassword(!isEditingPassword)
                       }
-                      className="bg-customRed mb-0 w-fit px-4 py-2 rounded-md text-white"
+                      className="px-4 py-2 mb-0 text-white rounded-md bg-customRed w-fit"
                     >
                       Cancel
                     </Buttons>
@@ -268,24 +268,24 @@ const UserDetails = () => {
             </div>
           </div>
           <div className="lg:w-[70%] sm:w-[90%] w-full  mx-auto shadow-lg shadow-gray-300 p-8 rounded-md">
-            <h1 className="text-slate-800 text-2xl font-bold  pb-4">
+            <h1 className="pb-4 text-2xl font-bold text-slate-800">
               Admin Actions
               <hr />
             </h1>
 
-            <div className="py-4 flex sm:flex-row flex-col sm:items-center items-start gap-4">
+            <div className="flex flex-col items-start gap-4 py-4 sm:flex-row sm:items-center">
               <div className="flex items-center gap-2">
-                <label className="text-slate-600 text-lg font-semibold ">
+                <label className="text-lg font-semibold text-slate-600 ">
                   Role:{" "}
                 </label>
                 <select
-                  className=" px-8 py-1 rounded-md  border-2 uppercase border-slate-600  "
+                  className="px-8 py-1 uppercase border-2 rounded-md  border-slate-600"
                   value={selectedRole}
                   onChange={handleRoleChange}
                 >
                   {roles.map((role) => (
                     <option
-                      className="bg-slate-200 flex flex-col gap-4 uppercase text-slate-700"
+                      className="flex flex-col gap-4 uppercase bg-slate-200 text-slate-700"
                       key={role.roleId}
                       value={role.roleName}
                     >
@@ -295,7 +295,7 @@ const UserDetails = () => {
                 </select>
               </div>
               <button
-                className="bg-btnColor hover:text-slate-300 px-4 py-2 rounded-md text-white "
+                className="px-4 py-2 text-white rounded-md bg-btnColor hover:text-slate-300 "
                 onClick={handleUpdateRole}
               >
                 {updateRoleLoader ? "Loading..." : "Update Role"}
@@ -305,12 +305,12 @@ const UserDetails = () => {
             <hr className="py-2" />
             <div className="flex flex-col gap-4 py-4">
               <div className="flex items-center gap-2">
-                <label className="text-slate-600 text-sm font-semibold uppercase">
+                <label className="text-sm font-semibold uppercase text-slate-600">
                   {" "}
                   Lock Account
                 </label>
                 <input
-                  className="text-14 w-5 h-5"
+                  className="w-5 h-5 text-14"
                   type="checkbox"
                   name="lock"
                   checked={!user?.accountNonLocked}
@@ -320,12 +320,12 @@ const UserDetails = () => {
                 />
               </div>
               <div className="flex items-center gap-2">
-                <label className="text-slate-600 text-sm font-semibold uppercase">
+                <label className="text-sm font-semibold uppercase text-slate-600">
                   {" "}
                   Account Expiry
                 </label>
                 <input
-                  className="text-14 w-5 h-5"
+                  className="w-5 h-5 text-14"
                   type="checkbox"
                   name="expire"
                   checked={!user?.accountNonExpired}
@@ -335,12 +335,12 @@ const UserDetails = () => {
                 />
               </div>
               <div className="flex items-center gap-2">
-                <label className="text-slate-600 text-sm font-semibold uppercase">
+                <label className="text-sm font-semibold uppercase text-slate-600">
                   {" "}
                   Account Enabled
                 </label>
                 <input
-                  className="text-14 w-5 h-5"
+                  className="w-5 h-5 text-14"
                   type="checkbox"
                   name="enabled"
                   checked={user?.enabled}
@@ -350,12 +350,12 @@ const UserDetails = () => {
                 />
               </div>
               <div className="flex items-center gap-2">
-                <label className="text-slate-600 text-sm font-semibold uppercase">
+                <label className="text-sm font-semibold uppercase text-slate-600">
                   {" "}
                   Credentials Expired
                 </label>
                 <input
-                  className="text-14 w-5 h-5"
+                  className="w-5 h-5 text-14"
                   type="checkbox"
                   name="credentialsExpire"
                   checked={!user?.credentialsNonExpired}
