@@ -168,6 +168,18 @@ public class AuthController {
         return (userDetails != null) ? userDetails.getUsername() : "" ;
     }
 
+    @PostMapping("/public/forgotpassword")
+    public ResponseEntity<?> forgotPassword(@RequestParam String email) {
+
+        try{
+            userService.generatePasswordResetToken(email);
+            return ResponseEntity.ok().body(new MessageResponse("Password reset token generated successfully!"));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Email not found!"));
+        }
+
+    }
 
 
 }
