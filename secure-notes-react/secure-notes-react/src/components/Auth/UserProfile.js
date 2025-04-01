@@ -66,7 +66,7 @@ const UserProfile = () => {
 
     const fetch2FAStatus = async () => {
       try {
-        const response = await api.get(`/auth/user/2fa-status`);
+        const response = await api.get(`/auth/user/2fa-status`); // whether 2fa authentication enable or not
         setIs2faEnabled(response.data.is2faEnabled);
       } catch (error) {
         setPageError(error?.response?.data?.message);
@@ -304,7 +304,7 @@ const UserProfile = () => {
       {pageLoader ? (
         <>
           {" "}
-          <div className="flex  flex-col justify-center items-center  h-72">
+          <div className="flex flex-col items-center justify-center h-72">
             <span>
               <Blocks
                 height="70"
@@ -323,27 +323,27 @@ const UserProfile = () => {
         <>
           {" "}
           <div className="xl:w-[70%] lg:w-[80%] sm:w-[90%] w-full sm:mx-auto sm:px-0 px-4   min-h-[500px] flex lg:flex-row flex-col gap-4 ">
-            <div className="flex-1  flex flex-col shadow-lg shadow-gray-300 gap-2 px-4 py-6">
-              <div className="flex flex-col items-center gap-2   ">
+            <div className="flex flex-col flex-1 gap-2 px-4 py-6 shadow-lg shadow-gray-300">
+              <div className="flex flex-col items-center gap-2 ">
                 <Avatar
                   alt={currentUser?.username}
                   src="/static/images/avatar/1.jpg"
                 />
-                <h3 className="font-semibold text-2xl">
+                <h3 className="text-2xl font-semibold">
                   {currentUser?.username}
                 </h3>
               </div>
               <div className="my-4 ">
-                <div className="space-y-2 px-4 mb-1">
+                <div className="px-4 mb-1 space-y-2">
                   <h1 className="font-semibold text-md text-slate-800">
                     UserName :{" "}
-                    <span className=" text-slate-700  font-normal">
+                    <span className="font-normal text-slate-700">
                       {currentUser?.username}
                     </span>
                   </h1>
                   <h1 className="font-semibold text-md text-slate-800">
                     Role :{" "}
-                    <span className=" text-slate-700  font-normal">
+                    <span className="font-normal text-slate-700">
                       {currentUser && currentUser["roles"][0]}
                     </span>
                   </h1>
@@ -357,13 +357,13 @@ const UserProfile = () => {
                       aria-controls="panel1-content"
                       id="panel1-header"
                     >
-                      <h3 className="text-slate-800 text-lg font-semibold ">
+                      <h3 className="text-lg font-semibold text-slate-800 ">
                         Update User Credentials
                       </h3>
                     </AccordionSummary>
                     <AccordionDetails className="shadow-md shadow-gray-300">
                       <form
-                        className=" flex flex-col gap-3"
+                        className="flex flex-col gap-3 "
                         onSubmit={handleSubmit(handleUpdateCredential)}
                       >
                         <InputField
@@ -402,7 +402,7 @@ const UserProfile = () => {
                         />
                         <Buttons
                           disabled={loading}
-                          className="bg-customRed font-semibold flex justify-center text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3"
+                          className="flex justify-center w-full py-2 my-3 font-semibold text-white transition-colors duration-100 rounded-sm bg-customRed hover:text-slate-400"
                           type="submit"
                         >
                           {loading ? <span>Loading...</span> : "Update"}
@@ -419,14 +419,14 @@ const UserProfile = () => {
                         aria-controls="panel1-content"
                         id="panel1-header"
                       >
-                        <h3 className="text-slate-800 text-lg font-semibold">
+                        <h3 className="text-lg font-semibold text-slate-800">
                           Account Setting
                         </h3>
                       </AccordionSummary>
                       <AccordionDetails className="shadow-md shadow-gray-300">
                         <div className="flex flex-col gap-4">
                           <div>
-                            <h3 className="text-slate-700 font-customWeight text-sm ">
+                            <h3 className="text-sm text-slate-700 font-customWeight ">
                               Account Expired
                             </h3>
                             <Switch
@@ -436,7 +436,7 @@ const UserProfile = () => {
                             />
                           </div>{" "}
                           <div>
-                            <h3 className="text-slate-700 font-customWeight text-sm ">
+                            <h3 className="text-sm text-slate-700 font-customWeight ">
                               Account Locked
                             </h3>
                             <Switch
@@ -446,7 +446,7 @@ const UserProfile = () => {
                             />
                           </div>{" "}
                           <div>
-                            <h3 className="text-slate-700 font-customWeight text-sm ">
+                            <h3 className="text-sm text-slate-700 font-customWeight ">
                               Account Enabled
                             </h3>
                             <Switch
@@ -457,11 +457,11 @@ const UserProfile = () => {
                           </div>
                           <>
                             <div className="mb-2">
-                              <h3 className="text-slate-700 font-customWeight text-sm ">
+                              <h3 className="text-sm text-slate-700 font-customWeight ">
                                 Credential Setting
                               </h3>
-                              <div className="shadow-gray-300 shadow-md px-4 py-4 rounded-md">
-                                <p className="text-slate-700  text-sm ">
+                              <div className="px-4 py-4 rounded-md shadow-md shadow-gray-300">
+                                <p className="text-sm text-slate-700 ">
                                   Your credential will expired{" "}
                                   <span>{credentialExpireDate}</span>
                                 </p>
@@ -469,7 +469,7 @@ const UserProfile = () => {
                             </div>
                           </>
                           <div>
-                            <h3 className="text-slate-700 font-customWeight text-sm">
+                            <h3 className="text-sm text-slate-700 font-customWeight">
                               Credential Expired
                             </h3>
                             <Switch
@@ -484,11 +484,11 @@ const UserProfile = () => {
                   </div>
 
                   <div className="pt-10 ">
-                    <h3 className="text-slate-800 text-lg font-semibold  mb-2 px-2">
+                    <h3 className="px-2 mb-2 text-lg font-semibold text-slate-800">
                       Last Login Session
                     </h3>
-                    <div className="shadow-md shadow-gray-300 px-4 py-2 rounded-md">
-                      <p className="text-slate-700 text-sm">
+                    <div className="px-4 py-2 rounded-md shadow-md shadow-gray-300">
+                      <p className="text-sm text-slate-700">
                         Your Last LogIn Session when you are loggedin <br />
                         <span>{loginSession}</span>
                       </p>
@@ -497,9 +497,9 @@ const UserProfile = () => {
                 </div>
               </div>
             </div>
-            <div className="flex-1 flex flex-col shadow-lg shadow-gray-300 gap-2 px-4 py-6">
+            <div className="flex flex-col flex-1 gap-2 px-4 py-6 shadow-lg shadow-gray-300">
               <div className="space-y-1">
-                <h1 className="text-slate-800 flex items-center gap-1 text-2xl font-bold">
+                <h1 className="flex items-center gap-1 text-2xl font-bold text-slate-800">
                   <span>Authentication (MFA)</span>
                   <span
                     className={` ${
@@ -509,10 +509,10 @@ const UserProfile = () => {
                     {is2faEnabled ? "Activated" : "Deactivated"}
                   </span>
                 </h1>{" "}
-                <h3 className="text-slate-800 text-xl font-semibold">
+                <h3 className="text-xl font-semibold text-slate-800">
                   Multi Factor Authentication
                 </h3>{" "}
-                <p className="text-slate-800 text-sm ">
+                <p className="text-sm text-slate-800 ">
                   Two Factor Authentication Add a additional layer of security
                   to your account
                 </p>
@@ -545,24 +545,24 @@ const UserProfile = () => {
                       aria-controls="panel1-content"
                       id="panel1-header"
                     >
-                      <h3 className="font-bold text-lg  text-slate-700 uppercase">
+                      <h3 className="text-lg font-bold uppercase text-slate-700">
                         QR Code To Scan
                       </h3>
                     </AccordionSummary>
                     <AccordionDetails>
                       <div className="">
                         <img src={qrCodeUrl} alt="QR Code" />
-                        <div className="flex items-center  gap-2  mt-4">
+                        <div className="flex items-center gap-2 mt-4">
                           <input
                             type="text"
                             placeholder="Enter 2FA code"
                             value={code}
                             required
-                            className="mt-4 border px-2 py-1 border-slate-800 rounded-md"
+                            className="px-2 py-1 mt-4 border rounded-md border-slate-800"
                             onChange={(e) => setCode(e.target.value)}
                           />
                           <button
-                            className="bg-btnColor text-white  px-3 h-10 rounded-md mt-4"
+                            className="h-10 px-3 mt-4 text-white rounded-md bg-btnColor"
                             onClick={verify2FA}
                           >
                             {twofaCodeLoader ? "Loading..." : "Verify 2FA"}

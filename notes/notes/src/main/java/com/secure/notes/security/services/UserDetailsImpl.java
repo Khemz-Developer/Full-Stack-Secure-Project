@@ -100,6 +100,8 @@ public class UserDetailsImpl implements UserDetails {
         return is2faEnabled;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
